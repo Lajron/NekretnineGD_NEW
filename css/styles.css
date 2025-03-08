@@ -1,0 +1,684 @@
+/* Resetting some default styles for a balanced design */
+* {
+    font-size: 0.9rem; /* Slightly larger font size */
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;  /* For Firefox */
+    -webkit-appearance: none;   /* For Chrome, Safari, Edge */
+    appearance: none;           /* For modern browsers */
+}
+
+.container {
+    width: 1200px;       /* Fixed width for large screens */
+    max-width: 100%;     /* Ensure it doesn't overflow */
+    margin: 0 auto;      /* Center the container horizontally */
+    margin-top: 1rem;
+    padding: 0 1rem;     /* Add some padding inside the container */
+    box-sizing: border-box;
+    overflow: auto;      /* Allow content to scroll if necessary */
+}
+
+/* FILTER ============================================================================================*/
+
+/* Filter container styling */
+#pretraga {
+    padding-bottom: 0px;
+}
+
+#filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem; /* Smaller gap between filter items */
+    box-sizing: border-box; /* Ensure padding/border is included in width calculation */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+}
+
+/* Individual filter elements */
+.filter-child {
+    flex: 1 1 22%; /* 4 items per row (with 22% width to account for gap) */
+    min-width: 150px; /* Prevent items from becoming too narrow */
+    margin-bottom: 0.25rem; /* Smaller gap between rows */
+    box-sizing: border-box; /* Make sure padding and borders are included in width/height */
+}
+
+.filter-child label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.25rem; /* Smaller margin for labels */
+    font-size: 1rem; /* Slightly larger label size */
+}
+
+/* Styling for input fields (including text inputs) and select elements */
+.filter-child input[type="number"],
+.filter-child input[type="text"],
+.filter-child select {
+    width: 100%;
+    padding: 0.5rem; /* Increased padding for better touch area */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem; /* Slightly larger font size */
+    height: 36px; /* Increased height for more visual space */
+    margin-bottom: 0.5rem; /* Smaller space below input fields */
+    box-sizing: border-box; /* Include padding and border in element's width/height */
+}
+
+.filter-child select option {
+    font-size: 1rem; /* Increase font size for the options inside the select menu */
+}
+
+/* Specific styling for filter-range, keeping Min and Max on the same line */
+.filter-range {
+    display: flex;
+    gap: 0.25rem; /* Space between the Min and Max fields */
+}
+
+
+
+/* CHECKBOX *************************************************/
+
+#filter-checkbox {
+    display: flex;
+    flex-wrap: wrap;  /* Allow items to wrap into new rows */
+    gap: 15px; /* Space between items */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+
+}
+
+.checkbox-column {
+    display: flex;
+    flex-direction: column;  /* Stack items vertically in each column */
+    flex: 1 1 calc(20% - 15px); /* 5 items per column by default */
+}
+
+.filter-checkbox-child {
+    display: flex;
+    align-items: center;  /* Align checkbox and label on the same line */
+    margin-bottom: 10px;  /* Space between checkboxes */
+}
+
+input[type="checkbox"] {
+    margin-right: 6px;  /* Space between checkbox and label */
+}
+
+label {
+    font-size: 14px;
+    display: inline-block;
+}
+
+
+
+/* OSTALO *************************************************/
+
+#filter-ostalo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.25rem; /* Adds spacing between groups */
+}
+
+#filter-ostalo .filter-ostalo-child {
+    display: flex;
+    align-items: baseline; /* Keeps items aligned horizontally */
+    gap: 0.25rem; /* Spacing between Pretraži and Sortiraj Po */
+}
+
+.filter-ostalo-child div {
+    min-width: 200px;
+    max-width: 100%;
+}
+
+.filter-ostalo-child select {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    height: 36px;
+    margin-bottom: 0.5rem;
+}
+
+.filter-ostalo-child select option {
+    font-size: 1rem;
+}
+
+/* Make buttons have the same height as select */
+.filter-ostalo-child button {
+    height: 36px;
+    padding: 0 1rem;
+    line-height: 36px; /* Ensures text is centered */
+    text-align: center; /* Extra centering */
+    border-radius: 0px;
+}
+
+.filter-ostalo-child button[type="reset"] {
+    background-color:firebrick;
+}
+
+/* NEKRETNINA ============================================================================================*/
+
+.nekretnina {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+#dodaj-nekretninu {
+    display: flex;
+    height: 36px;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#dodaj-nekretninu h2 {
+    margin: 0px;
+    padding: 0px;
+    padding-top: 2px;
+}
+
+#dodaj-btn {
+    margin: 0px;
+    padding: 0px;
+    width: 36px;
+    height: 36px;
+    font-size: 36px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px;
+}
+.nekretnina-top {
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* Aktivnost | Naslov | Opcije */
+    align-items: center;
+    white-space: nowrap;
+}
+
+.nekretnina-top h3 {
+    margin: 0; 
+    padding: 0; 
+} 
+
+.nekretnina-top-aktivnost {
+    background-color: seagreen;
+    padding: 1rem;
+    font-weight: bold;
+    position: relative;
+    left: -1.5rem;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5); /* Small shadow */
+}
+
+.nekretnina-top-aktivnost h3 {
+    color:beige;
+}
+.nekretnina-top-naslov {
+    position: relative;
+    left: -1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nekretnina-top-opcije {
+    display: flex;
+    justify-content: end;
+}
+
+.nekretnina-top-opcije button {
+    position: relative;
+    margin: 0px;
+    height: 36px;
+    padding: 0 1rem;
+    line-height: 36px; 
+    text-align: center; 
+    border-radius: 0px;
+    width: max-content;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5); /* Small shadow */
+}
+
+#remove-btn {
+    border: 1px solid firebrick;
+    background-color: firebrick;
+    margin-left: 0.5rem;
+
+}
+
+
+/* MIDDLE *************************************************/
+
+.nekretnina-middle {
+    display: grid;
+    grid-template-columns: 2fr 5fr 3fr 2fr; /* Four equal columns */
+    align-items: stretch; /* Ensure all items stretch to the same height */
+    padding: 0px;
+}
+
+
+.photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 180px; /* Fixed height for photo column */
+    background-color:white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.photo img {
+    object-fit:cover; /* Ensures the image covers the container */
+}
+
+.nekretnina-middle-info,
+.nekretnina-middle-karakteristike,
+.nekretnina-middle-klijent {
+    padding: 1rem;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 180px; /* Fixed height for all columns */
+    /* border-left: 1px seagreen solid; */
+}
+
+.nekretnina-middle-info h4,
+.nekretnina-middle-karakteristike h4,
+.nekretnina-middle-klijent h4 {
+    color:seagreen;
+    margin-bottom: 0.25rem; /* Small margin between h4 and ul */
+}
+
+.nekretnina-middle-info ul,
+.nekretnina-middle-karakteristike ul,
+.nekretnina-middle-klijent ul {
+    margin: 0;
+    padding-left: 0px; /* Space for list items */
+}
+
+.nekretnina-middle-info ul li,
+.nekretnina-middle-karakteristike ul li,
+.nekretnina-middle-klijent ul li {
+    list-style: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+
+
+/* BOTTOM *************************************************/
+
+.nekretnina-bottom {
+    display: grid;
+    grid-template-columns: 1fr 5fr; /* Divide into two columns */
+    gap: 0.25rem; /* Space between the columns */
+    padding: 0px;
+    /* padding-top: 0.5rem; */
+    /* background-color: yellow; */
+}
+
+.nekretnina-bottom-info {
+    background-color: #fdfdfd; /* Clean white background */
+    padding: 1rem 1rem;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+    font-size: 1rem;
+    color: #222;
+    line-height: 1.6;
+    max-height: 512px;
+    max-width: 100%; /* Prevents overflow */
+    overflow-x: auto; /* Enables horizontal scrolling if needed */
+    white-space: normal; /* Ensures text wraps properly */
+    scrollbar-width: thin; /* Minimalistic scrollbar for Firefox */
+    scrollbar-color: rgba(0, 0, 0, 0.4) transparent; /* Thin & subtle */
+}
+
+.nekretnina-bottom-info p {
+    margin-bottom: 1rem;
+}
+
+.nekretnina-bottom-info strong {
+    color: #111;
+}
+
+.nekretnina-bottom-info ul {
+    padding-left: 1.2rem;
+}
+
+.nekretnina-bottom-info li {
+    margin-bottom: 0.5rem;
+}
+
+.nekretnina-bottom-tags {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+}
+
+.tag {
+    background-color: seagreen;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.9em;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+    height: max-content;
+}
+
+.tag:first-child {
+    background-color: dimgrey;
+    width: 95%;
+    border-radius: 0px;
+    margin-bottom: 0.5rem;
+}
+
+/* DODAJ ============================================================================================*/
+#dodaj-modul {
+    padding-bottom: 0px;
+}
+
+#dodaj-grid {
+    /* background-color: chocolate; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, auto);
+    gap: 0.5rem;
+}
+
+#dodaj-grid h3 {
+    margin-bottom: 0px;
+}
+
+#dodaj-grid > h3:nth-of-type(1) {
+    grid-column: span 3;
+    align-content: center;
+}
+
+#dodaj-grid > h3:nth-of-type(2) {
+    grid-column: span 1;
+    padding: 0.5rem;
+    color: seagreen;
+}
+
+#dodaj-grid > section:nth-of-type(1) {
+    grid-column: span 3;
+}
+
+#dodaj-grid > section:nth-of-type(2) {
+    grid-column: span 1; 
+}
+
+#dodaj-grid > section:nth-of-type(3),
+#dodaj-grid > section:nth-of-type(4) {
+    grid-column: span 4;
+}
+
+
+#add-nekretnina {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem; /* Smaller gap between filter items */
+    box-sizing: border-box; /* Ensure padding/border is included in width calculation */
+    border-bottom: 1px solid  rgba(0, 0, 0, 0.05); 
+    border-top: 1px solid  rgba(0, 0, 0, 0.05); 
+    padding-top: 0.25rem;
+}
+
+.two-line {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.two-line div {
+    flex-grow: 1;
+}
+
+#add-vlasnik {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem; /* Smaller gap between filter items */
+    padding: 0 0.5rem;
+    padding-top: 0.25rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid  rgba(0, 0, 0, 0.05); 
+    border-top: 1px solid  rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+#add-vlasnik label {
+    color: seagreen;
+}
+
+#add-tags {
+    display: flex;
+    flex-wrap: wrap;  /* Allow items to wrap into new rows */
+    gap: 15px; /* Space between items */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+}
+
+#add-tags .checkbox-column {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#add-tags .checkbox-column .filter-checkbox-child {
+    width: calc(16.66% - 0.5rem); /* 5 items per row (100% / 5 = 20%) */
+    display: flex;
+    align-items: center;
+}
+
+
+#add-description {
+    display: grid;
+    grid-template-columns: 5fr 3fr;
+    gap: 0.5rem;
+}
+
+#text-editor {
+    background-color: white;
+    height: auto; /* Allows dynamic height but keeps it within the bounds of the parent */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* To stack the toolbar and content area */
+}
+
+#photo-uploader {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    border-left: 2px solid var(--pico-primary-background);
+    border-bottom: 2px solid var(--pico-primary-background);
+    border-right: 2px solid var(--pico-primary-background);
+    overflow-y: auto;
+    border-radius: 1px;
+    height:400px;
+    background-color: #ffffff;
+    background-image: url("https://i.ibb.co/FbVZDsT0/test.png") !important;
+    background-size:contain !important;
+    background-position: center !important;
+    background-repeat: no repeat !important;
+}
+
+#photo-uploader .img-add {
+    display: flex;
+    position: sticky;
+    top: 0px;
+    justify-content: flex-start;
+    align-items: center;
+    /* background-color: #eee; */
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
+    width: 100%;
+    height: 45px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.plus-btn {
+    background-color: var(--pico-primary-background);
+    border: 1px solid var(--pico-primary-border);
+    color: white;
+    margin: 0px;
+    padding: 0px;
+    width: 46px;
+    height: 46px;
+    font-size: 36px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px;
+    cursor: pointer;
+}
+
+.plus-btn:hover {
+    background-color: var(--pico-primary-hover-background);
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+    width: calc(100%/3);
+    height: calc(100%/3);
+    padding: 0.25rem;
+}
+
+#photo-uploader img {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    object-fit:cover;
+    cursor: pointer; /* Show pointer cursor on hover */
+}
+
+.delete-btn {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    background-color: firebrick;
+    right: 5px;
+    top: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 20px;
+    padding: 5px;
+}
+
+.delete-btn:hover {
+    color: #ddd;
+}
+
+/* Modal style */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+.modal-content {
+    display: flex;
+    max-width: 90%;
+    max-height: 80%;
+    margin: auto;
+    top: calc(100-width/2);
+    display: block;
+    border: 2px solid var(--pico-primary-border);;
+}
+
+.close {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    cursor: pointer;
+}
+
+/* The editor container itself */
+#editor-container {
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+    height: 354px;
+}
+
+.ql-toolbar {
+    background-color: #eee;
+}
+.ql-toolbar button {
+    background-color: #fff;     /* Ensure buttons have white background */
+    border: 1px solid #ccc;     /* Border around toolbar buttons */
+    padding: 10px;
+    margin: 2px;
+    border-radius: 4px;         /* Make buttons rounded */
+}
+
+#dva-dugmeta {
+    display: flex;
+    justify-content: space-between;
+    height: max-content;
+    grid-column: 1 / -1;
+}
+
+#add-nekretnina-btn {
+    height: 40px;
+    padding: 0 1rem;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    border-radius: 0px;
+}
+
+#reset-nekretnina-btn {
+    height: 40px;
+    padding: 0 1rem;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    border-radius: 0px;
+    background-color:firebrick;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

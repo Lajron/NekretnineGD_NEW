@@ -1,0 +1,176 @@
+@media (max-width: 1024px) {
+    .filter-child {
+        flex: 1 1 calc(50% - 0.5rem); /* 2 items per row on medium screens */
+    }
+
+    .checkbox-column {
+        flex: 1 1 calc(50% - 15px);  /* 2 items per column */
+    }
+
+    .nekretnina-top {
+        display: grid;
+        grid-template-columns: auto auto; /* Aktivnost and Opcije in the same row, auto width */
+        grid-template-rows: auto auto; /* Two rows */
+        grid-gap: 4px; /* Gap between rows/columns */
+    }
+
+    .nekretnina-top-aktivnost {
+        order: 1; /* Aktivnost stays first */
+        width: min-content;
+    }
+
+    .nekretnina-top-opcije {
+        order: 2; /* Opcije stays next to Aktivnost */
+        width: 100%;
+    }
+
+    .nekretnina-top-naslov {
+        order: 3; /* Naslov moves below */
+        grid-column: span 2; /* Takes full width below */
+        left: 0px;
+    }
+
+    .nekretnina-middle {
+        grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns on medium screens */
+
+    }
+
+    .nekretnina-middle-info {
+        height: 200px;
+    }
+
+    .nekretnina-middle-karakteristike,
+    .nekretnina-middle-klijent {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+
+    .nekretnina-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .nekretnina-bottom-info {
+        margin-bottom: 0.25rem;
+    }
+    .nekretnina-bottom-tags {
+        order: 2;
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .tag:first-child {
+        display: none;
+    }
+
+    #dodaj-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    #dodaj-grid > h3:nth-of-type(1),
+    #dodaj-grid > h3:nth-of-type(2),
+    #dodaj-grid > section:nth-of-type(1),
+    #dodaj-grid > section:nth-of-type(2) {
+        grid-column: span 1;
+    }
+    
+    #dodaj-grid > section:nth-of-type(3),
+    #dodaj-grid > section:nth-of-type(4) {
+        grid-column: span 2;
+    }
+
+    #add-vlasnik {
+        align-content:flex-start;
+    }
+
+    #add-vlasnik .filter-child {
+        flex: 1 1 100%;
+    }
+
+    #add-tags .checkbox-column .filter-checkbox-child {
+        width: calc(33.33% - 0.5rem);
+    }
+
+    #add-description {
+        flex-direction: column;
+    }
+
+    #add-description {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .filter-child {
+        flex: 1 1 100%; /* 1 item per row on small screens */
+    }
+
+    .nekretnina-middle {
+        grid-template-columns: 1fr; /* Switch to 1 column on small screens */
+    }
+
+    .photo {
+        background-color: white;
+    }
+
+    .nekretnina-middle-info,
+    .nekretnina-middle-karakteristike,
+    .nekretnina-middle-klijent {
+        background-color: #f4f4f4;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 200px; /* Fixed height for all columns */
+        border-bottom: grey 1px solid;
+        background-color: white;
+    }
+    
+    .nekretnina-middle-info ul,
+    .nekretnina-middle-karakteristike ul,
+    .nekretnina-middle-klijent ul {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .nekretnina-middle-info ul li,
+    .nekretnina-middle-karakteristike ul li,
+    .nekretnina-middle-klijent ul li {
+        text-align: center;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    #dodaj-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #dodaj-grid h3 {
+        justify-self: start;
+    }
+
+    #dodaj-grid > h3:nth-of-type(1),
+    #dodaj-grid > h3:nth-of-type(2),
+    #dodaj-grid > section:nth-of-type(1),
+    #dodaj-grid > section:nth-of-type(2),
+    #dodaj-grid > section:nth-of-type(3),
+    #dodaj-grid > section:nth-of-type(4) {
+        grid-column: span 1;
+    }
+
+    #dodaj-grid > h3:nth-of-type(2) {
+        grid-row: 3;
+    }
+
+    #add-tags .checkbox-column .filter-checkbox-child {
+        width: calc(50% - 0.5rem);
+    }
+}
+
+/* Media query for very small screens */
+@media (max-width: 500px) {
+    .checkbox-column {
+        flex: 1 1 100%;  /* 1 item per column */
+    }
+}
