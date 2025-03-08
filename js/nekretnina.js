@@ -1,3 +1,4 @@
+
 class Nekretnina {
     constructor(n = {}, v = {}, t = {}, o = "", s = []) {
         this.id; 
@@ -8,30 +9,18 @@ class Nekretnina {
         this.slike = s;
     }
 
-    addNekretnina() {
+    addNekretnina() {}
 
-    }
+    addVlasnik() {}
 
-    addVlasnik() {
+    addTagovi() {}
 
-    }
+    addOpis() {}
 
-    addTagovi() {
+    addSlike() {}
 
-    }
-
-    addOpis() {
-
-    }
-
-    addSlike() {
-
-    }
-
-    display() {
-
-    }
-
+    display() {}
 }
 
 export default Nekretnina;
+

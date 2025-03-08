@@ -1,5 +1,8 @@
 export const PhotoUploader = {
     init: () => {
+        PhotoUploader.destroy();
+        PhotoUploader.create();
+        
         const fileInput = document.getElementById('img-input');
         const previewContainer = document.getElementById('photo-uploader');
         
@@ -62,24 +65,7 @@ export const PhotoUploader = {
                             const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7); // Adjust quality (0.7 = 70%)
 
                             // Create image wrapper
-                            const imgContainer = document.createElement('div');
-                            imgContainer.classList.add('image-wrapper');
-
-                            const previewImg = document.createElement('img');
-                            previewImg.src = compressedBase64;
-                            previewImg.dataset.fullsize = compressedBase64;
-
-                            const deleteBtn = document.createElement('span');
-                            deleteBtn.classList.add('delete-btn');
-                            deleteBtn.innerHTML = "✖"; // Trash icon (🗑)
-
-                            deleteBtn.addEventListener('click', function() {
-                                imgContainer.remove();
-                            });
-
-                            imgContainer.appendChild(previewImg);
-                            imgContainer.appendChild(deleteBtn);
-                            previewContainer.appendChild(imgContainer);
+                            PhotoUploader.addImage(previewContainer, compressedBase64);
                         };
                     };
                 } else {
@@ -87,5 +73,61 @@ export const PhotoUploader = {
                 }
             });
         }
+    },
+    
+    addImage: (parent, data) => {
+        const imgContainer = document.createElement('div');
+        imgContainer.classList.add('image-wrapper');
+
+        const previewImg = document.createElement('img');
+        previewImg.src = data;
+        previewImg.dataset.fullsize = data;
+
+        const deleteBtn = document.createElement('span');
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.innerHTML = "✖"; // Trash icon (🗑)
+
+        deleteBtn.addEventListener('click', function() {
+            imgContainer.remove();
+        });
+
+        imgContainer.appendChild(previewImg);
+        imgContainer.appendChild(deleteBtn);
+        parent.appendChild(imgContainer);
+    },
+
+    clear: () => {
+        document.querySelectorAll("#photo-uploader .image-wrapper").forEach(img => img.remove());
+    },
+
+    destroy: () => {
+        const uploader = document.getElementById('photo-uploader').remove();
+        if (uploader) {
+            uploader.remove();
+        }
+    },
+
+    create: () => {
+        const uploader = document.createElement('div');
+        uploader.id = 'photo-uploader';
+
+        const input = document.createElement('input');
+        input.id = 'img-input';
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.multiple = true;
+        input.style.display = 'none';
+
+        const label = document.createElement('label');
+        label.htmlFor = 'img-input';
+        label.classList.add('plus-btn');
+        label.innerHTML = '＋';
+
+        uploader.appendChild(label);
+        uploader.appendChild(input);
+
+        const parent = document.querySelector("#add-description");
+        if (parent) parent.appendChild(uploader);
+
     }
 }

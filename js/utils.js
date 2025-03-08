@@ -58,7 +58,6 @@ export const Utility = {
             window.quill.setContents([]);
         }
         
-        document.getElementById("aktivan_oglas").selectedIndex = 0;
         this.populateSelectMOL();
         
         // Reset uploaded images
