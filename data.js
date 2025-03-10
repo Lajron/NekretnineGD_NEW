@@ -519,3 +519,214 @@ export const TagoviHTML = [
   { id: 'hitno', label: 'Hitno' }
 ];
 
+export const FilterHTML = {
+  inputs: [
+    {
+      "id": "f-tekst",
+      "label": "Direktna Pretraga",
+      "type": "text"
+    },
+    {
+      "id": "f-usluga",
+      "label": "Usluga",
+      "type": "select",
+      "options": ["Prodaja", "Izdavanje", "Procena"]
+    },
+    {
+      "id": "f-tip_nekretnine",
+      "label": "Tip Nekretnine",
+      "type": "select",
+      "options": ["Garsonjera", "Jednosoban", "Jednoiposoban", "Dvosoban", "Dvoiposoban", "Trosoban", "Troiposoban", "Četvorosoban", "Četvoroiposoban", "Petosoban", "Šestosoban", "Sedmosoban", "Poslovni prostor", "Lokal", "Kuća", "Zemljište", "Magacin", "Hala", "Poslovni objekat", "Ugostiteljski objekat", "Garaža"]
+    },
+    {
+      "id": "f-stanje_nekretnine",
+      "label": "Stanje Nekretnine",
+      "type": "select",
+      "options": ["Novo", "Renovirano", "Lux", "Standard", "Izvorno", "Za renoviranje"]
+    },
+    {
+      "id": "f-mesto",
+      "label": "Mesto",
+      "type": "select",
+      "options": []  // Options will be dynamically populated based on the selected "mesto"
+    },
+    {
+      "id": "f-opstina",
+      "label": "Opština",
+      "type": "select",
+      "options": []  // Options will be dynamically populated based on the selected "mesto"
+    },
+    {
+      "id": "f-lokacija",
+      "label": "Lokacija",
+      "type": "select",
+      "options": []  // Options will be dynamically populated based on the selected "opstina"
+    },
+    {
+      "id": "f-namestenost",
+      "label": "Namestenost",
+      "type": "select",
+      "options": ["Namešten", "Polunamešten", "Prazan"]
+    },
+    {
+      "id": "f-cena",
+      "label": "Cena",
+      "type": "range",
+      "fields": [
+        {
+          "id": "f-cenaMin",
+          "label": "Cena Min",
+          "type": "number",
+          "placeholder": "0",
+          "min": "0"
+        },
+        {
+          "id": "f-cenaMax",
+          "label": "Cena Max",
+          "type": "number",
+          "placeholder": "5000",
+          "min": "0"
+        }
+      ]
+    },
+    {
+      "id": "f-kvadratura",
+      "label": "Kvadratura",
+      "type": "range",
+      "fields": [
+        {
+          "id": "f-kvadraturaMin",
+          "label": "Kvadratura Min",
+          "type": "number",
+          "placeholder": "0",
+          "min": "0"
+        },
+        {
+          "id": "f-kvadraturaMax",
+          "label": "Kvadratura Max",
+          "type": "number",
+          "placeholder": "5000",
+          "min": "0"
+        }
+      ]
+    },
+    {
+      "id": "f-sprat",
+      "label": "Sprat",
+      "type": "select",
+      "options": ["Prizemlje", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"]
+    },
+    {
+      "id": "f-tip_objekta",
+      "label": "Tip Objekta",
+      "type": "select",
+      "options": ["Stara gradnja", "Novogradnja", "U izgradnji", "Novija gradnja"]
+    },
+    {
+      "id": "f-dokumentacija",
+      "label": "Dokumentacija",
+      "type": "select",
+      "options": ["Uknjižen", "Predat na uknjižbu", "Predat na legalizaciju", "Neuknjižen"]
+    },
+    {
+      "id": "f-status",
+      "label": "Status",
+      "type": "select",
+      "options": ["Aktivan", "Neaktivan"]
+    },
+    {
+      "id": "f-aktivan_oglas",
+      "label": "Aktivan oglas",
+      "type": "select",
+      "options": ["Da", "Ne"]
+    },
+    {
+      "id": "f-vrsta_vlasnika",
+      "label": "Vrsta Vlasnika",
+      "type": "select",
+      "options": ["Fizičko lice", "Pravno lice"]
+    }
+  ],
+  checkboxes: [
+    {
+      "id": "f-vidljiv",
+      "label": "Vidljiv"
+    },
+    {
+      "id": "f-fiksna_cena",
+      "label": "Fiksna cena"
+    },
+    {
+      "id": "f-moze_na_kredit",
+      "label": "Može na kredit"
+    },
+    {
+      "id": "f-klima",
+      "label": "Klima"
+    },
+    {
+      "id": "f-salonac",
+      "label": "Salonac"
+    },
+    {
+      "id": "f-duplex",
+      "label": "Duplex"
+    },
+    {
+      "id": "f-penthaus",
+      "label": "Penthaus"
+    },
+    {
+      "id": "f-open_space",
+      "label": "Open space"
+    },
+    {
+      "id": "f-kucni_ljubimci",
+      "label": "Kućni ljubimci"
+    },
+    {
+      "id": "f-studenti",
+      "label": "Studenti"
+    },
+    {
+      "id": "f-poslovni_prostor",
+      "label": "Poslovni prostor"
+    },
+    {
+      "id": "f-kratkorocno_izdavanje",
+      "label": "Kratkoročno izdavanje"
+    },
+    {
+      "id": "f-terasa",
+      "label": "Terasa"
+    },
+    {
+      "id": "f-garaza",
+      "label": "Garaža"
+    },
+    {
+      "id": "f-parking",
+      "label": "Parking"
+    },
+    {
+      "id": "f-lift",
+      "label": "Lift"
+    },
+    {
+      "id": "f-sporet",
+      "label": "Sporet"
+    },
+    {
+      "id": "f-frizder",
+      "label": "Frižider"
+    },
+    {
+      "id": "f-ves_masina",
+      "label": "Veš mašina"
+    },
+    {
+      "id": "f-sudo_masina",
+      "label": "Sudomašina"
+    }
+  ]
+};

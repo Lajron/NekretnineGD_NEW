@@ -52,7 +52,7 @@
     .nekretnina-bottom-info {
         margin-bottom: 0.25rem;
     }
-    .nekretnina-bottom-tags {
+    /* .nekretnina-bottom-tags {
         order: 2;
         flex-direction: row;
         justify-content: center;
@@ -60,7 +60,7 @@
     
     .tag:first-child {
         display: none;
-    }
+    } */
 
     #dodaj-grid {
         grid-template-columns: repeat(2, 1fr);

@@ -6,6 +6,7 @@
     <title>GD Nekretnine</title>
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@latest/css/pico.cyan.min.css">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/media-styles.css">
 </head>
@@ -17,230 +18,27 @@
             <article id="pretraga">
                 <h2>▼ Pretraga nekretnine</h2>
                 <section  id="filter">
-                    <div class="filter-child">
-                        <label for="tekst">Direktna Pretraga</label>
-                        <input type="text" id="tekst">
-                    </div>
-                    <div class="filter-child">
-                        <label for="usluga">Usluga</label>
-                        <select id="usluga">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
                     
-                    <div class="filter-child">
-                        <label for="tipNekretnine">Tip Nekretnine</label>
-                        <select id="tipNekretnine">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
-                    
-                    <div class="filter-child">
-                        <label for="mesto">Mesto</label>
-                        <select id="mesto">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
-                    
-                    <div class="filter-child">
-                        <label for="opstina">Opština</label>
-                        <select id="opstina">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
-                    
-                    <div class="filter-child">
-                        <label for="lokacija">Lokacija</label>
-                        <select id="lokacija">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
-                    
-                    <div class="filter-child">
-                        <label for="namestenost">Namestenost</label>
-                        <select id="namestenost">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
-                    <div class="filter-child">
-                        <label for="cena">Cena</label>
-                        <div class="filter-range">
-                            <input type="number" id="cenaMin" placeholder="0" min="0">
-                            <input type="number" id="cenaMax" placeholder="5000" min="0">
-                        </div>
-                    </div>
-                    <div class="filter-child">
-                        <label for="kvadratura">Kvadratura</label>
-                        <div class="filter-range">
-                            <input type="number" id="kvadraturaMin" placeholder="0" min="0">
-                            <input type="number" id="kvadraturaMax" placeholder="5000" min="0">
-                        </div>
-                    </div>
-                    <div class="filter-child">
-                        <label for="spratnost">Spratnost</label>
-                        <select id="spratnost">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
-                    <div class="filter-child">
-                        <label for="stanjeNekretnine">Stanje Nekretnine</label>
-                        <select id="stanjeNekretnine">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
-                    <div class="filter-child">
-                        <label for="tipObjekta">Tip Objekta</label>
-                        <select id="tipObjekta">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
-                    <div class="filter-child">
-                        <label for="dokumentacija">Dokumentacija</label>
-                        <select id="dokumentacija">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
-                    <div class="filter-child">
-                        <label for="status">Status</label>
-                        <select id="status">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
-                    <div class="filter-child">
-                        <label for="aktivan">Aktivan</label>
-                        <select id="aktivan">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
-                    <div class="filter-child">
-                        <label for="vrstaVlasnika">Vrsta Vlasnika</label>
-                        <select id="vrstaVlasnika">
-                            <option value="">- Izaberite...</option>
-                            <!-- Dodaj opcije ovde -->
-                        </select>
-                    </div>
                 </section>
                 <section id="filter-checkbox">
                     <div class="checkbox-column">
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="vidljiv" name="vidljiv" value="0">
-                            <label for="vidljiv">Vidljiv</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="fiksnaCena" name="fiksnaCena" value="0">
-                            <label for="fiksnaCena">Fiksna cena</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="mozeNaKredit" name="mozeNaKredit" value="0">
-                            <label for="mozeNaKredit">Može na kredit</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="klima" name="klima" value="0">
-                            <label for="klima">Klima</label>
-                        </div>
+                        
                     </div>
 
                     <div class="checkbox-column">                
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="salonac" name="salonac" value="0">
-                            <label for="salonac">Salonac</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="duplex" name="duplex" value="0">
-                            <label for="duplex">Duplex</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="penthaus" name="penthaus" value="0">
-                            <label for="penthaus">Penthaus</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="openSpace" name="openSpace" value="0">
-                            <label for="openSpace">Open space</label>
-                        </div>
+                        
                     </div>
                 
                     <div class="checkbox-column">
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="kucniLjubimci" name="kucniLjubimci" value="0">
-                            <label for="kucniLjubimci">Kućni ljubimci</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="studenti" name="studenti" value="0">
-                            <label for="studenti">Studenti</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="poslovniProstor" name="poslovniProstor" value="0">
-                            <label for="poslovniProstor">Poslovni prostor</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="kratkorocnoIzdavanje" name="kratkorocnoIzdavanje" value="0">
-                            <label for="kratkorocnoIzdavanje">Kratkoročno izdavanje</label>
-                        </div>
+                        
                     </div>
                     
                     <div class="checkbox-column">
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="terasa" name="terasa" value="0">
-                            <label for="terasa">Terasa</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="garaza" name="garaza" value="0">
-                            <label for="garaza">Garaža</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="parking" name="parking" value="0">
-                            <label for="parking">Parking</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="lift" name="lift" value="0">
-                            <label for="lift">Lift</label>
-                        </div>
+                        
                     </div>
                     
                     <div class="checkbox-column">
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="sporet" name="sporet" value="0">
-                            <label for="sporet">Sporet</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="frizder" name="frizder" value="0">
-                            <label for="frizder">Frižider</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="vesMasina" name="vesMasina" value="0">
-                            <label for="vesMasina">Veš mašina</label>
-                        </div>
-                    
-                        <div class="filter-checkbox-child">
-                            <input type="checkbox" id="sudoMasina" name="sudoMasina" value="0">
-                            <label for="sudoMasina">Sudomašina</label>
-                        </div>
+                        
                     </div>
                 </section>
                 <section id="filter-ostalo">
@@ -280,7 +78,7 @@
                     </div>
                     <hr>
                     <div class="nekretnina-middle">
-                        <div class="photo">
+                        <div class="photo" id="slideshow-modal">
                             <img src="https://amateurphotographer.com/wp-content/uploads/sites/7/2023/04/Paulina-Stopka-vertical-landscapesTatra-Mountains.jpg">
                         </div>
                         <div class="nekretnina-middle-info">
@@ -317,8 +115,10 @@
                         </div>
                     </div>
                     <div class="nekretnina-bottom">
+                        <section class="nekretnina-bottom-info">
+                            Politika poslovanja Avenija&Exprolux nekretnine.
+                        </section>
                         <div class="nekretnina-bottom-tags">
-                            <a class="tag">DODATNE INFORMACIJE</a>
                             <a class="tag">DVORISTE</a>
                             <a class="tag">OSTAVA</a>
                             <a class="tag">PODRUM</a>
@@ -328,16 +128,60 @@
                             <a class="tag">KLIMA</a>
                             <a class="tag">POMOCNI OBJEKAT</a>
                         </div>
-                        <section class="nekretnina-bottom-info">
-                            Politika poslovanja Avenija&Exprolux nekretnine.
-                        </section>
                     </div>                 
                 </article>
             </article>
             
         </section>
-        
-    </main>
+        <section>
+            <article id="dodaj-modul">
+                <button type="button" id="nazad-btn" class="">&times;</button>
+                <div id="dodaj-grid">
+                    <h3>Nekretnina</h3>
+                    <h3>Vlasnik</h3>
+                    <section id="add-nekretnina">
+                    </section>
+                    
+                    <section id="add-vlasnik">
+                    </section>
+                    
+                    <section id="add-tags">
+                        <div class="checkbox-column">
+                        </div>
+                    </section>
+                    <section id="add-description">
+                        <div id="text-editor">
+                            <div id="editor-container">
+                            </div>
+                        </div>
+                        <div id="photo-uploader">
+                            <div class="img-add">
+                                <label for="img-input" class="plus-btn">＋</label>
+                                <input type="file" id="img-input" accept="image/*" multiple style="display: none;" />
+                            </div>
+                        </div>
+                    </section>
+                    <div id="dva-dugmeta">
+                        <button type="submit" id="add-nekretnina-btn">Dodaj nekretninu</button>
+                        <button type="reset" id="reset-nekretnina-btn">Reset</button>
+                    </div>
+                    <div id="image-modal" class="modal">
+                        <span id="close-modal" class="close">&times;</span>
+                        <img id="modal-img" class="modal-content" />                        
+                    </div>
+                </div>
+            </article>
+        </section>
 
+
+        <div id="image-modal" class="modal">
+            <span id="close-modal" class="close">&times;</span>
+            <img id="modal-img" class="modal-content" />
+            <a class="prev" id="prev-btn">&#10094;</a>
+            <a class="next" id="next-btn">&#10095;</a>
+        </div>
+    </main>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>
