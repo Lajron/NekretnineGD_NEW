@@ -297,6 +297,46 @@ export const FilterPage = {
 
     render: () => {
         FilterPage.renderFilter();
+    },
+
+    getData: () => {
+        const filters = {};
+        const form = document.querySelector('#pretraga');
+
+        // Process input fields
+        form.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
+            if (input.value !== "") {
+                filters[input.name.replace('f-', '')] = { operator: "==", value: input.value };
+            }
+        });
+
+        // Process select fields
+        form.querySelectorAll('select').forEach(select => {
+            if (select.value !== "" && select.value !== "- Izaberite...") {
+                filters[select.name.replace('f-', '')] = { operator: "==", value: select.value };
+            }
+        });
+
+        // Process checkbox fields
+        form.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            if (checkbox.checked) {
+                filters[checkbox.name.replace('f-', '')] = { operator: "==", value: true };
+            }
+        });
+
+        // Handling range inputs
+        form.querySelectorAll('.filter-range').forEach(range => {
+            const minInput = range.querySelector('input[name$="_Min"]');
+            const maxInput = range.querySelector('input[name$="_Max"]');
+            if (minInput && minInput.value !== "") {
+                filters[minInput.name.replace('f-', '').replace('_Min', '')] = { operator: ">=", value: minInput.value };
+            }
+            if (maxInput && maxInput.value !== "") {
+                filters[maxInput.name.replace('f-', '').replace('_Max', '')] = { operator: "<=", value: maxInput.value };
+            }
+        });
+        console.log(filters);
+        return filters;
     }
 }
 

@@ -4,6 +4,10 @@ import Nekretnina from "./js/nekretnina.js";
 document.addEventListener("DOMContentLoaded", () => {
     //Prikaz i filtriranje nekretnina
     FilterPage.render();
+    document.getElementById("filter-btn")
+            .addEventListener("click", function() {
+                FilterPage.getData();
+            });
     const pretraga = document.getElementById("pretraga");
     const nekretnine = document.getElementById("nekretnine");
     const addNekretnina = document.getElementById("dodaj-modul");
@@ -31,14 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
     NekretninaPage.render();
 
 
-    // document.getElementById("add-nekretnina-btn")
-    //         .addEventListener("click", function() {
-    //             NekretninaPage.getData();
-    //         });
+    document.getElementById("add-nekretnina-btn")
+            .addEventListener("click", function() {
+                NekretninaPage.getData();
+            });
 
-    // document.getElementById("reset-nekretnina-btn")
-    //         .addEventListener("click", function() {
-    //             NekretninaPage.reset();
-    //             // NekretninaPage.update();
-    //         });
+    document.getElementById("reset-nekretnina-btn")
+            .addEventListener("click", function() {
+                NekretninaPage.reset();
+                // NekretninaPage.update();
+            });
 });
