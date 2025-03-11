@@ -3,6 +3,7 @@ import { Mesto, NekretninaHTML, VlasnikHTML, TagoviHTML, FilterHTML } from './da
 import { TextEditor } from "./js/text-editor.js"
 import { PhotoUploader } from "./js/photo-uploader.js"
 import { Modal } from "./js/modal.js";
+import { API } from './api.js';
 
 
 export const NekretninaPage = {
@@ -68,16 +69,8 @@ export const NekretninaPage = {
             NekretninaPage.populateElements.select(lId, Mesto[mesto.value][opstina.value]);
             if (l.length) lokacija.value = l;
     
-            mesto.addEventListener('change', () => {
-                opstina.innerHTML = "";
-                NekretninaPage.populateElements.select(oId, Object.keys(Mesto[mesto.value]));
-    
-                lokacija.innerHTML = "";
-                NekretninaPage.populateElements.select(lId, Mesto[mesto.value][opstina.value])
-            });
-    
             opstina.addEventListener('change', () => {
-                lokacija.innerHTML = "";
+                lokacija.innerHTML = `<option value="">- Izaberite...</option>`;
                 NekretninaPage.populateElements.select(lId, Mesto[mesto.value][opstina.value])
             });
         },
@@ -112,7 +105,12 @@ export const NekretninaPage = {
             const container = document.querySelector('#add-vlasnik');
     
             VlasnikHTML.forEach(item => {
-                const content = NekretninaPage.renderElements.input(item.id, "", item.type);
+                let content = '';
+                if (item.type === "text") {
+                    content = NekretninaPage.renderElements.input(item.id, "", item.type);
+                } else if (item.type === "select") {
+                    content = NekretninaPage.renderElements.select(item.id, item.options);
+                }
                 const filterChild = document.createElement('div');
                 filterChild.className = 'filter-child';
                 filterChild.innerHTML = `<label for="${item.id}">${item.label}</label>${content}`;
@@ -142,6 +140,9 @@ export const NekretninaPage = {
         PhotoUploader.init();
         Modal.image();
         NekretninaPage.populateElements.mol("Niš", "Crveni Krst", "Branko Bjegović");
+
+        const e = document.querySelectorAll('#dodaj-grid .filter-child select, #dodaj-grid .filter-child input');
+        borderListen(e);
     },
 
     reset: () => {
@@ -152,43 +153,46 @@ export const NekretninaPage = {
         PhotoUploader.init();
         TextEditor.destroy();
 
+        const naslov = document.querySelector('#dodaj-grid h3:nth-of-type(1)');
+        naslov.textContent = `Nekretnina`;
+
         // Re-render the page
         NekretninaPage.render();
     },
 
     update: (nekretnina) => {
-            NekretninaPage.reset();
-            for (const key in nekretnina.nekretnina) {
-                const element = document.getElementById(key);
-                if (element) {
-                    element.value = nekretnina.nekretnina[key];
-                }
+        NekretninaPage.reset();
+        for (const key in nekretnina.nekretnina) {
+            const element = document.getElementById(key);
+            if (element) {
+                element.value = nekretnina.nekretnina[key];
             }
+        }
 
-            NekretninaPage.populateElements.mol(nekretnina.nekretnina["mesto"], nekretnina.nekretnina["opstina"], nekretnina.nekretnina["lokacija"])
+        NekretninaPage.populateElements.mol(nekretnina.nekretnina["mesto"], nekretnina.nekretnina["opstina"], nekretnina.nekretnina["lokacija"]);
 
-            for (const key in nekretnina.vlasnik) {
-                const element = document.getElementById(key);
-                if (element) {
-                    element.value = nekretnina.vlasnik[key];
-                }
+        for (const key in nekretnina.vlasnik) {
+            const element = document.getElementById(key);
+            if (element) {
+                element.value = nekretnina.vlasnik[key];
             }
+        }
 
-            for (const key in nekretnina.vlasnik) {
-                const element = document.getElementById(key);
-                if (element) {
-                    element.value = nekretnina.vlasnik[key];
-                }
+        for (const key in nekretnina.tagovi) {
+            const element = document.getElementById(key);
+            if (element) {
+                element.checked = nekretnina.tagovi[key];
             }
+        }
 
-            if (window.quill) {
-                window.quill.root.innerHTML = nekretnina.opis;
-            }
+        if (window.quill) {
+            window.quill.root.innerHTML = nekretnina.opis;
+        }
 
-            const previewContainer = document.getElementById('photo-uploader');
-            nekretnina.slike.forEach(slika => {
-                PhotoUploader.addImage(previewContainer, slika);
-            });
+        const previewContainer = document.getElementById('photo-uploader');
+        nekretnina.slike.forEach(slika => {
+            PhotoUploader.addImage(previewContainer, slika);
+        });
     },
 
     getData: () => {
@@ -234,8 +238,7 @@ export const NekretninaPage = {
         console.log(nekretnina);
 
         return nekretnina;
-
-    },
+    }
 };
 
 export const FilterPage = { 
@@ -246,7 +249,13 @@ export const FilterPage = {
 
         select: (name, options) => {
             let optionsHtml = `<option value="">- Izaberite...</option>`;
-            optionsHtml += options.map(option => `<option value="${option}">${option}</option>`).join('');
+            optionsHtml += options.map(option => {
+                if (option === "Prizemlje") {
+                    return `<option value="0">Prizemlje</option>`;
+                } else {
+                    return `<option value="${option}">${option}</option>`;
+                }
+            }).join('');
             return `<select name="${name}" id="${name}">${optionsHtml}</select>`;
         },
 
@@ -295,8 +304,31 @@ export const FilterPage = {
 
     },
 
+    sortingBy: () => {
+        const sortOptions = [
+            "Datum - Opadajuci",
+            "Datum - Rastuci",
+            "Cena - Rastuca",
+            "Cena - Opadajuca",
+            "Kvadratura - Rastuca",
+            "Kvadratura - Opadajuca"
+        ];
+        const sortSelect = document.getElementById("sortirajPo");
+        sortSelect.innerHTML = ""; // Clear existing options
+        sortOptions.forEach(option => {
+            const optionElement = document.createElement("option");
+            optionElement.value = option;
+            optionElement.textContent = option;
+            sortSelect.appendChild(optionElement);
+        });
+        sortSelect.value = "Datum - Opadajuci"; // Set default value
+    },
+
     render: () => {
         FilterPage.renderFilter();
+        FilterPage.sortingBy();
+        const e = document.querySelectorAll('#filter .filter-child select, #filter .filter-child input');
+        borderListen(e);
     },
 
     getData: () => {
@@ -304,39 +336,49 @@ export const FilterPage = {
         const form = document.querySelector('#pretraga');
 
         // Process input fields
-        form.querySelectorAll('input[type="text"], input[type="number"]').forEach(input => {
+        form.querySelectorAll('#filter input[type="text"], #filter input[type="number"]').forEach(input => {
             if (input.value !== "") {
-                filters[input.name.replace('f-', '')] = { operator: "==", value: input.value };
+                filters[`nekretnina.${input.name.replace('f-', '')}`] = { operator: "==", value: input.value };
             }
         });
 
         // Process select fields
-        form.querySelectorAll('select').forEach(select => {
+        form.querySelectorAll('#filter select').forEach(select => {
             if (select.value !== "" && select.value !== "- Izaberite...") {
-                filters[select.name.replace('f-', '')] = { operator: "==", value: select.value };
+                const fieldName = select.name.replace('f-', '');
+                if (fieldName === 'vrsta_vlasnika') {
+                    filters[`vlasnik.${fieldName}`] = { operator: "==", value: select.value };
+                } else {
+                    filters[`nekretnina.${fieldName}`] = { operator: "==", value: select.value };
+                }
             }
         });
 
         // Process checkbox fields
-        form.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        form.querySelectorAll('#filter-checkbox input[type="checkbox"]').forEach(checkbox => {
             if (checkbox.checked) {
-                filters[checkbox.name.replace('f-', '')] = { operator: "==", value: true };
+                filters[`tagovi.${checkbox.name.replace('f-', '')}`] = { operator: "==", value: true };
             }
         });
 
-        // Handling range inputs
-        form.querySelectorAll('.filter-range').forEach(range => {
-            const minInput = range.querySelector('input[name$="_Min"]');
-            const maxInput = range.querySelector('input[name$="_Max"]');
-            if (minInput && minInput.value !== "") {
-                filters[minInput.name.replace('f-', '').replace('_Min', '')] = { operator: ">=", value: minInput.value };
-            }
-            if (maxInput && maxInput.value !== "") {
-                filters[maxInput.name.replace('f-', '').replace('_Max', '')] = { operator: "<=", value: maxInput.value };
-            }
-        });
+        // Remove range keys
+        delete filters['nekretnina.cenaMin'];
+        delete filters['nekretnina.cenaMax'];
+        delete filters['nekretnina.kvadraturaMin'];
+        delete filters['nekretnina.kvadraturaMax'];
+
         console.log(filters);
         return filters;
+    },
+
+    reset: () => {
+        const container = document.querySelector('#filter');
+        container.innerHTML = '';
+        const checkboxContainer = document.querySelectorAll('#filter-checkbox .checkbox-column');
+        checkboxContainer.forEach(column => column.innerHTML = '');
+        const sortSelect = document.getElementById("sortirajPo");
+        sortSelect.innerHTML = ""; // Clear existing options
+        FilterPage.render();
     }
 }
 
@@ -351,8 +393,8 @@ export const NekretninaItem = {
                     <h3>${data.id}, ${data.nekretnina.usluga}, ${data.nekretnina.tip_nekretnine}, ${data.nekretnina.lokacija}</h3>
                 </div>
                 <div class="nekretnina-top-opcije">
-                    <button type="button" id="edit-btn" class="btn secondary">Izmeni</button>
-                    <button type="button" id="remove-btn" class="btn secondary">⨉</button>
+                    <button type="button" class="edit-btn btn secondary">Izmeni</button>
+                    <button type="button" class="remove-btn btn secondary">⨉</button>
                 </div>
             </div>
             <hr>
@@ -363,7 +405,7 @@ export const NekretninaItem = {
         const imagesHtml = data.slike.map((src, index) => `<img src="${src}" alt="Nekretnina Photo" data-index="${index}" class="${index === 0 ? 'active' : 'hidden'}">`).join('');
         return `
             <div class="nekretnina-middle">
-                <div class="photo" id="slideshow-modal">
+                <div class="photo" id="slider-container">
                     ${imagesHtml}
                 </div>
                 <div class="nekretnina-middle-info">
@@ -395,6 +437,7 @@ export const NekretninaItem = {
                         <li>${data.vlasnik.brojTelefona1}</li>
                         <li>${data.vlasnik.email}</li>
                         <li>${data.vlasnik.d_lokacija}</li>
+                        <li>${data.vlasnik.vrsta_vlasnika ?? ""}</li>
                     </ul>
                 </div>
             </div>
@@ -402,15 +445,20 @@ export const NekretninaItem = {
     },
 
     renderBottom: (data) => {
-        const tags = [...Object.keys(data.tagovi).filter(tag => data.tagovi[tag]).map(tag => tag.toUpperCase())];
-        const tagsHtml = tags.map(tag => `<a class="tag">${tag}</a>`).join('');
+        const tags = Object.keys(data.tagovi)
+            .filter(tag => data.tagovi[tag])
+            .map(tag => {
+                const tagObj = TagoviHTML.find(t => t.id === tag);
+                return tagObj ? `<a class="tag">${tagObj.label}</a>` : '';
+            })
+            .join('');
         return `
             <div class="nekretnina-bottom">
                 <section class="nekretnina-bottom-info">
                     ${data.opis}
                 </section>
                 <div class="nekretnina-bottom-tags">
-                    ${tagsHtml}
+                    ${tags}
                 </div>
             </div>
         `;
@@ -427,11 +475,69 @@ export const NekretninaItem = {
             ${NekretninaItem.renderBottom(data)}
         `;
         container.appendChild(nekretninaItem);
-        console.log("in render");
-        Modal.imageSlider();
+
+        // Add event listeners for edit and remove buttons
+        nekretninaItem.querySelector('.edit-btn').addEventListener('click', async () => {
+            const nData = await API.readNekretnina(data.id);
+            NekretninaPage.update(nData);
+
+            const pretraga = document.getElementById("pretraga");
+            const addNekretnina = document.getElementById("dodaj-modul");
+
+            pretraga.style.display = 'none';
+            container.style.display = 'none';
+            addNekretnina.style.display = 'block';
+
+            const naslov = addNekretnina.querySelector('#dodaj-grid h3:nth-of-type(1)');
+            naslov.textContent = `${data.id} Nekretnina`;
+
+            const dodajBtn = document.getElementById("add-nekretnina-btn");
+            const resetBtn = document.getElementById("reset-nekretnina-btn");
+            const izmeniBtn = document.getElementById("izmeni-nekretnina-btn");
+            dodajBtn.style.display = 'none';
+            resetBtn.style.display = 'none';
+            izmeniBtn.style.display = 'block';
+        });
+
+        nekretninaItem.querySelector('.remove-btn').addEventListener('click', async () => {
+            await API.deleteNekretnina(data.id);
+            nekretninaItem.remove();
+        });
+
+        Modal.imageSlider(nekretninaItem); // Ensure this is called after the item is appended to the DOM
     }
 };
 
+export const NekretninaList = {
+    render: (dataList, parent = "nekretnine") => {
+        const container = document.getElementById(parent);
+        // Remove only the items with the class 'nekretnina'
+        const items = container.querySelectorAll('.nekretnina');
+        items.forEach(item => item.remove());
+
+        dataList.forEach(data => {
+            NekretninaItem.render(data, parent);
+        });
+    }
+};
+
+export const borderListen = (elements) => {
+    const border = elements;
+    console.log(border);
+    border.forEach((element) => {
+        const defaultValue = element.value;
+        const defaultBorderColor = window.getComputedStyle(element).borderColor;
+        element.addEventListener("change", function() {
+            if (element.value !== defaultValue) {
+                element.style.borderColor = "seagreen";
+                element.style.borderWidth = "2px";
+            } else {
+                element.style.borderColor = defaultBorderColor;
+                element.style.borderWidth = "1px";
+            }
+        });
+    });
+}
 
 
 

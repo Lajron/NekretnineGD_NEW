@@ -464,11 +464,6 @@ export const VlasnikHTML = [
     "type": "text"
   },
   {
-    "id": "brojTelefona2",
-    "label": "Broj Telefona 2",
-    "type": "text"
-  },
-  {
     "id": "email",
     "label": "Email",
     "type": "text"
@@ -477,7 +472,13 @@ export const VlasnikHTML = [
     "id": "d_lokacija",
     "label": "Lokacija",
     "type": "text"
-  }
+  },
+  {
+    "id": "vrsta_vlasnika",
+    "label": "Vrsta Vlasnika",
+    "type": "select",
+      "options": ["Fizičko lice", "Pravno lice"]
+  },
 ]
 
 export const TagoviHTML = [
@@ -522,8 +523,8 @@ export const TagoviHTML = [
 export const FilterHTML = {
   inputs: [
     {
-      "id": "f-tekst",
-      "label": "Direktna Pretraga",
+      "id": "f-id",
+      "label": "ID",
       "type": "text"
     },
     {
@@ -533,7 +534,7 @@ export const FilterHTML = {
       "options": ["Prodaja", "Izdavanje", "Procena"]
     },
     {
-      "id": "f-tip_nekretnine",
+      "id": "f-tip_nekretnine", 
       "label": "Tip Nekretnine",
       "type": "select",
       "options": ["Garsonjera", "Jednosoban", "Jednoiposoban", "Dvosoban", "Dvoiposoban", "Trosoban", "Troiposoban", "Četvorosoban", "Četvoroiposoban", "Petosoban", "Šestosoban", "Sedmosoban", "Poslovni prostor", "Lokal", "Kuća", "Zemljište", "Magacin", "Hala", "Poslovni objekat", "Ugostiteljski objekat", "Garaža"]

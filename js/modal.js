@@ -22,17 +22,19 @@ export const Modal = {
         });
     },
 
-    imageSlider: () => {
-        const modal = document.getElementById('image-modal');
-        const modalImg = document.getElementById('modal-img');
-        const closeModal = document.getElementById('close-modal');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
+    imageSlider: (container) => {
+        console.log("Image slider initialized");
+        const modal = document.getElementById('slider-modal');
+        const modalImg = document.getElementById('slider-modal-img');
+        const closeModal = document.getElementById('slider-close-modal');
+        const prevBtn = document.getElementById('slider-prev-btn');
+        const nextBtn = document.getElementById('slider-next-btn');
         let currentIndex = 0;
         let images = [];
 
-        document.addEventListener('click', function(e) {
+        container.addEventListener('click', function(e) {
             if (e.target.closest('.photo') && e.target.tagName.toLowerCase() === 'img') {
+                console.log("Image clicked");                
                 images = Array.from(e.target.closest('.photo').querySelectorAll('img'));
                 currentIndex = images.indexOf(e.target);
                 modal.style.display = 'flex';

@@ -20,6 +20,10 @@ input[type="number"] {
 }
 
 /* FILTER ============================================================================================*/
+#toggleFilter {
+    cursor: pointer;
+}
+
 
 /* Filter container styling */
 #pretraga {
@@ -61,6 +65,11 @@ input[type="number"] {
     height: 36px; /* Increased height for more visual space */
     margin-bottom: 0.5rem; /* Smaller space below input fields */
     box-sizing: border-box; /* Include padding and border in element's width/height */
+}
+
+.filter-child select {
+    padding: 0.4rem;
+    padding-left: 0.5rem;
 }
 
 .filter-child select option {
@@ -223,6 +232,7 @@ label {
 .nekretnina-top-opcije {
     display: flex;
     justify-content: end;
+    gap: 0.25rem;
 }
 
 .nekretnina-top-opcije button {
@@ -237,11 +247,14 @@ label {
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5); /* Small shadow */
 }
 
-#remove-btn {
+.remove-btn {
     border: 1px solid firebrick;
     background-color: firebrick;
     margin-left: 0.5rem;
+}
 
+.remove-btn:hover {
+    background-color :darkred;
 }
 
 
@@ -369,6 +382,7 @@ label {
     background-color: seagreen;
     color: white;
     padding: 0.4rem 1rem;
+    margin-top: 0.5rem;
     border-radius: 2rem;
     font-size: 0.9em;
     text-decoration: none;
@@ -638,9 +652,80 @@ label {
     right: 25px;
     cursor: pointer;
 }
+/* Image Modal style */
+.image-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
 
-#prev-btn,
-#next-btn {
+.image-modal-content {
+    display: flex;
+    max-width: 90%;
+    max-height: 80%;
+    margin: auto;
+    top: calc(100-width/2);
+    display: block;
+    border: 2px solid var(--pico-primary-border);
+}
+
+.image-close {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    cursor: pointer;
+}
+
+/* Slider Modal style */
+.slider-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black with opacity */
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+.slider-modal-content {
+    display: flex;
+    max-width: 90%;
+    max-height: 80%;
+    margin: auto;
+    top: calc(100-width/2);
+    display: block;
+    border: 2px solid var(--pico-primary-border);
+}
+
+.slider-close {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    cursor: pointer;
+}
+
+#slider-prev-btn,
+#slider-next-btn {
     display: block; /* Ensure buttons are displayed */
     cursor: pointer;
     position: absolute;
@@ -656,21 +741,20 @@ label {
     user-select: none;
 }
 
-#next-btn {
+#slider-next-btn {
     right: 0;
     border-radius: 3px 0 0 3px;
 }
 
-#prev-btn {
+#slider-prev-btn {
     left: 0;
     border-radius: 3px 0 0 3px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
-#prev-btn:hover, #next-btn:hover {
+#slider-prev-btn:hover, #slider-next-btn:hover {
     background-color: rgba(0,0,0,0.8);
 }
-
 
 /* Hide the images by default */
 img.hidden {
@@ -681,7 +765,6 @@ img.hidden {
 img.active {
     display: block;
 }
-
 /* The editor container itself */
 #editor-container {
     background-color: white;
@@ -720,6 +803,19 @@ img.active {
     border-radius: 0px;
 }
 
+#izmeni-nekretnina-btn {
+    display: none;
+    height: 40px;
+    padding: 0 1rem;
+    font-weight: bold;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    border-radius: 0px;
+}
+
 #reset-nekretnina-btn {
     height: 40px;
     padding: 0 1rem;
@@ -731,6 +827,19 @@ img.active {
     border-radius: 0px;
     background-color:firebrick;
 
+}
+
+#reset-btn:hover,
+#reset-nekretnina-btn:hover {
+    background-color: darkred;
+}
+
+#filter, #filter-checkbox {
+    display: flex; /* Initially hidden */
+}
+
+#filter.hide, #filter-checkbox.hide {
+    display: none; /* Show when the 'show' class is added */
 }
 
 
