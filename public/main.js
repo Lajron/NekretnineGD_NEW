@@ -41,10 +41,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     FilterPage.render();
 
     const filterResult = FilterPage.getData();
-    let nekretninaItems = await API.filterNekretnina(filterResult);
-    nekretninaItems = applyRangeFilters(nekretninaItems);
-    nekretninaItems = applySorting(nekretninaItems);
-    NekretninaList.render(nekretninaItems);
+    let nekretninaItems;
+    try {
+        nekretninaItems = await API.filterNekretnina(filterResult);
+        nekretninaItems = applyRangeFilters(nekretninaItems);
+        nekretninaItems = applySorting(nekretninaItems);
+        NekretninaList.render(nekretninaItems);
+    } catch (error) {
+        if (error.code === 'permission-denied') {
+            await API.signOut();
+            window.location.href = "login.html";
+        } else {
+            console.error("Error fetching nekretnina items:", error);
+        }
+    }
 
     document.getElementById("filter-btn")
             .addEventListener("click", async function() {
@@ -126,10 +136,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         await API.signOut();
     });
 
-    API.onAuthStateChanged((user) => {
+    API.onAuthStateChanged(async (user) => {
         if (user) {
-            mainContent.style.display = "block";
-            logoutButton.style.display = "none";
+            try {
+                mainContent.style.display = "block";
+                logoutButton.style.display = "none";
+            } catch (error) {
+                if (error.code === 'permission-denied') {
+                    await API.signOut();
+                    window.location.href = "login.html";
+                } else {
+                    console.error("Error checking permissions:", error);
+                }
+            }
         } else {
             window.location.href = "login.html";
         }

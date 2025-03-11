@@ -1,3 +1,12 @@
+html, body {
+    height: 100%; /* Ensure the body and html take the full height */
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0 url('https://www.transparenttextures.com/patterns/gplay.png') repeat;
+    background-attachment: fixed; /* Make the background fixed */
+    display: flex;
+    flex-direction: column;
+}
 /* Resetting some default styles for a balanced design */
 * {
     font-size: 0.9rem; /* Slightly larger font size */
@@ -12,11 +21,9 @@ input[type="number"] {
     width: 1200px;       /* Fixed width for large screens */
     max-width: 100%;     /* Ensure it doesn't overflow */
     margin: 0 auto;      /* Center the container horizontally */
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     padding: 0 1rem;     /* Add some padding inside the container */
     box-sizing: border-box;
-    overflow: auto;      /* Allow content to scroll if necessary */
-
 }
 
 /* FILTER ============================================================================================*/
@@ -219,7 +226,7 @@ label {
 }
 
 .nekretnina-top-aktivnost h3 {
-    color:beige;
+    color:white;
 }
 .nekretnina-top-naslov {
     position: relative;

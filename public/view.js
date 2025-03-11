@@ -387,7 +387,7 @@ export const NekretninaItem = {
         return `
             <div class="nekretnina-top">
                 <div class="nekretnina-top-aktivnost">
-                    <h3>${data.nekretnina.cena}€</h3>
+                    <h3>${new Intl.NumberFormat('de-DE', { style: 'decimal' }).format(data.nekretnina.cena)}€</h3>
                 </div>
                 <div class="nekretnina-top-naslov">
                     <h3>${data.id}, ${data.nekretnina.usluga}, ${data.nekretnina.tip_nekretnine}, ${data.nekretnina.lokacija}</h3>
