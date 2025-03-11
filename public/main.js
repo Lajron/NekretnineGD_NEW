@@ -119,7 +119,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                 NekretninaPage.reset();
             });
     
-    
+    const logoutButton = document.getElementById("logout-btn");
+    const mainContent = document.querySelector("main");
+
+    logoutButton.addEventListener("click", async () => {
+        await API.signOut();
+    });
+
+    API.onAuthStateChanged((user) => {
+        if (user) {
+            mainContent.style.display = "block";
+            logoutButton.style.display = "none";
+        } else {
+            window.location.href = "login.html";
+        }
+    });
 });
 
 function applyRangeFilters(nekretninaItems) {

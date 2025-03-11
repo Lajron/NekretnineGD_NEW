@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GD Nekretnine</title>
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@latest/css/pico.cyan.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/media-styles.css">
+    <script src="https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js"></script>
+    <script type="module" src="api.js"></script>
+    <style>
+        /* Center the content */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #f0f0f0 url('https://www.transparenttextures.com/patterns/gplay.png');
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+            font-size: 2.25rem;
+            color: #333;
+            font-weight: bold;
+            font-family: 'Roboto', Arial, sans-serif;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            text-align: center;
+            background: linear-gradient(to right, var(--pico-primary) 0%, var(--pico-primary-background) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            }
+
+        /* Style the login button */
+        #login-btn {
+            background-color: var(--pico-primary-background);
+            border: 1px solid var(--pico-primary-border);
+            color: white;
+            border: none;
+            padding: 1rem 1rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+        }
+
+        #login-btn img {
+            margin-right: 8px;
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border-radius: 50%;
+            padding: 4px;
+        }
+
+        #login-btn:hover {
+            background-color: var(--pico-primary-hover-background);
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>GD Nekretnine</h1>
+    <button id="login-btn" class="btn">
+        <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="Google Logo">
+        Sign in with Google
+    </button>
+    <script type="module">
+        import { API } from './api.js';
+
+        document.getElementById("login-btn").addEventListener("click", async () => {
+            await API.signIn();
+            window.location.href = "index.html";
+        });
+
+        API.onAuthStateChanged((user) => {
+            if (user) {
+                window.location.href = "index.html";
+            }
+        });
+    </script>
+</body>
+</html>
