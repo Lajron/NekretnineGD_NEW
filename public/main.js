@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Set the initial state based on localStorage
     if (!filterState) {
         filter.classList.add('hide');
-        toggleFilter.innerHTML = '▲ Pretraga nekretnine';
+        toggleFilter.innerHTML = '<span>▲</span> Pretraga nekretnine';
     }
     if (!filterCheckboxState) {
         filterCheckbox.classList.add('hide');
@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         // Update the inner HTML based on the visibility state
         if (filter.classList.contains('hide')) {
-            toggleFilter.innerHTML = '▲ Pretraga nekretnine';
+            toggleFilter.innerHTML = '<span>▲</span> Pretraga nekretnine';
         } else {
-            toggleFilter.innerHTML = '▼ Pretraga nekretnine';
+            toggleFilter.innerHTML = '<span>▼</span> Pretraga nekretnine';
         }
 
         // Save the state to localStorage

@@ -121,7 +121,7 @@ export const PhotoUploader = {
         const label = document.createElement('label');
         label.htmlFor = 'img-input';
         label.classList.add('plus-btn');
-        label.innerHTML = '＋';
+        label.innerHTML = '';
 
         uploader.appendChild(label);
         uploader.appendChild(input);

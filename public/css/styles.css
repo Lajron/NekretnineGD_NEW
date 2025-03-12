@@ -26,14 +26,44 @@ input[type="number"] {
     box-sizing: border-box;
 }
 
+
+
 /* FILTER ============================================================================================*/
 #toggleFilter {
     cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    /* background-color: yellow; */
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0px;
+
+}
+
+
+
+#toggleFilter span {
+    all: unset;
+    background-color: teal;
+    border: 1px solid var(--pico-primary-border);
+    padding: 0.25rem;
+    border-radius: 1px;
+    color: white;
+    display: flex;
+    width: 2rem;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+#toggleFilter span:hover {
+    background-color: var(--pico-primary-hover-background);
 }
 
 /* Filter container styling */
 #pretraga {
     padding-bottom: 0px;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 #filter {
@@ -96,20 +126,18 @@ input[type="number"] {
     display: flex;
     flex-wrap: wrap;  /* Allow items to wrap into new rows */
     gap: 15px; /* Space between items */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
-
 }
 
 .checkbox-column {
     display: flex;
     flex-direction: column;  /* Stack items vertically in each column */
     flex: 1 1 calc(20% - 15px); /* 5 items per column by default */
+    gap: 0.5rem;
 }
 
 .filter-checkbox-child {
     display: flex;
     align-items: center;  /* Align checkbox and label on the same line */
-    margin-bottom: 10px;  /* Space between checkboxes */
 }
 
 input[type="checkbox"] {
@@ -131,6 +159,8 @@ label {
     justify-content: space-between;
     align-items: baseline;
     gap: 0.25rem; /* Adds spacing between groups */
+    border-top: 1px solid rgba(0, 0, 0, 0.1); 
+    padding-top: 0.5rem;
 }
 
 #filter-ostalo .filter-ostalo-child {
@@ -171,19 +201,23 @@ label {
 }
 
 /* NEKRETNINA ============================================================================================*/
-
+#nekretnine {
+    background-color: rgba(255, 255, 255, 0.6);
+}
 .nekretnina {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     gap: 0.25rem;
+    margin-top: 0.5rem;
 }
 
 #dodaj-nekretninu {
     display: flex;
-    height: 36px;
+    align-items: center;
+    height: 50px;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 #dodaj-nekretninu h2 {
@@ -198,11 +232,14 @@ label {
     width: 36px;
     height: 36px;
     font-size: 36px;
-    padding-bottom: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 0px;
+    background-image:url("../img/plus.png"); /* Set the background image */
+    background-size:contain; /* Ensure the image covers the entire button */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; 
 }
 .nekretnina-top {
     display: grid;
@@ -271,6 +308,8 @@ label {
     grid-template-columns: 2fr 5fr 3fr 2fr; /* Four equal columns */
     align-items: stretch; /* Ensure all items stretch to the same height */
     padding: 0px;
+    margin-top: 0.5rem;
+
 }
 
 
@@ -407,16 +446,17 @@ label {
 #dodaj-modul {
     padding-bottom: 0px;
     display: none;
+    position: relative;
 }
 
 #nazad-btn {
-    position:relative;
+    position:absolute;
     background-color: #eee;
     color: dimgray;
     border: 1px solid #f9f9f9;
     height: max-content;
     line-height: 3rem;
-    float: right;
+    right: 1rem;
     margin-right: -1rem;
     margin-top: -1rem;
     padding: 0 0.8rem;
@@ -578,7 +618,10 @@ label {
     width: 46px;
     height: 46px;
     font-size: 36px;
-    padding-bottom: 5px;
+    background-image:url("../img/plus.png"); /* Set the background image */
+    background-size:contain; /* Ensure the image covers the entire button */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -847,6 +890,9 @@ img.active {
 #filter.hide, #filter-checkbox.hide {
     display: none; /* Show when the 'show' class is added */
 }
+
+
+
 
 
 

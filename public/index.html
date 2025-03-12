@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/media-styles.css">
 </head>
-<body style="background: #f0f0f0 url('https://www.transparenttextures.com/patterns/gplay.png') repeat; background-attachment: fixed;">
+<body>
     <button id="logout-btn" class="btn" style="display: none;">Logout</button>
     <main class="container" style="display: none;">
         
         <section>
             <article id="pretraga">
-                <h2 id="toggleFilter">▼ Pretraga nekretnine</h2>
+                <h2 id="toggleFilter"><span>▼</span> Pretraga nekretnine</h2>
                 <section  id="filter">
                     
                 </section>
@@ -55,7 +55,7 @@
         <section>
             <article id="nekretnine">
                 <div id="dodaj-nekretninu">
-                    <button type="button" id="dodaj-btn">＋</button>
+                    <button type="button" id="dodaj-btn"></button>
                     <h2>Nekretnine</h2>
                 </div>
             </article>
@@ -63,7 +63,7 @@
 
         <section>
             <article id="dodaj-modul">
-                <button type="button" id="nazad-btn" class="">&times;</button>
+                <button type="button" id="nazad-btn">&times;</button>
                 <div id="dodaj-grid">
                     <h3>Nekretnina</h3>
                     <h3>Vlasnik</h3>
@@ -84,7 +84,7 @@
                         </div>
                         <div id="photo-uploader">
                             <div class="img-add">
-                                <label for="img-input" class="plus-btn">＋</label>
+                                <label for="img-input" class="plus-btn"></label>
                                 <input type="file" id="img-input" accept="image/*" multiple style="display: none;" />
                             </div>
                         </div>

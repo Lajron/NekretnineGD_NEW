@@ -397,7 +397,6 @@ export const NekretninaItem = {
                     <button type="button" class="remove-btn btn secondary">⨉</button>
                 </div>
             </div>
-            <hr>
         `;
     },
 
@@ -500,8 +499,10 @@ export const NekretninaItem = {
         });
 
         nekretninaItem.querySelector('.remove-btn').addEventListener('click', async () => {
-            await API.deleteNekretnina(data.id);
-            nekretninaItem.remove();
+            if (confirm("Da li ste sigurni da želite da obrišete ovu nekretninu?")) {
+                await API.deleteNekretnina(data.id);
+                nekretninaItem.remove();
+            }
         });
 
         Modal.imageSlider(nekretninaItem); // Ensure this is called after the item is appended to the DOM
