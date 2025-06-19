@@ -7,12 +7,12 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signO
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAeK109fFhCBMc9NQLWP-P0KKRd8lUM0AU",
-    authDomain: "nekretninegd.firebaseapp.com",
-    projectId: "nekretninegd",
-    storageBucket: "nekretninegd.firebasestorage.app",
-    messagingSenderId: "1012233968906",
-    appId: "1:1012233968906:web:a337ee4a7bbe9a07056ef3"
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
 };
 
 // Initialize Firebase
